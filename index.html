@@ -38,7 +38,6 @@ section > .close {
     </section>    
   <section><h1>Heading</h1>
     <div class="body">
-    <p>some lorum ipssuneeth erh th eth eth et eth     <div class="body">
 eth eth eh eth teh eth e eht hte </p>
     <p>some lorum ipssuneeth erh th eth eth et eth eth eth eh eth teh eth e eht hte </p>
     <p>some lorum ipssuneeth erh th eth eth et eth eth eth eh eth teh eth e eht hte </p>
@@ -187,25 +186,27 @@ $('section h1').click(function(){
 // close from bottom
 $('section .close').click(function(){
    
-  var sec = $(this).closest('section');
-  sec.toggleClass('open');
+	var sec = $(this).closest('section');
+	sec.toggleClass('open');
 
 
-  // If the heading is visible then just let is slide up
   
-  // If the heading is not visible then slide the top down instead of the bottom up
-  
-  var scrollTop = $('body').scrollTop();
-  var sectionTop    = sec.position().top;
-  var sectionHeight = sec.find('.body').outerHeight();
+	var scrollTop = $('body').scrollTop();
+	var sectionTop    = sec.position().top;
 
-  sec.find('.body').slideUp(delay);
+	sec.find('.body').slideUp(delay);
+
+	// If the heading is visible then just let is slide up
+	if (sectionTop > scrollTop){ return; }
+  
+	// If the heading is not visible then slide the top down instead of the bottom up
+	var sectionHeight = sec.find('.body').outerHeight();
+
  
-  // kick of scrolltop animation
-  $('html,body').animate({
-    scrollTop: scrollTop - sectionHeight
-  }, delay);
-  
+	// kick of scrolltop animation
+	$('html,body').animate({
+		scrollTop: scrollTop - sectionHeight
+	}, delay);
 });
 
 
