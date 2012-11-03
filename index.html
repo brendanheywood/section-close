@@ -20,7 +20,8 @@ section.open > .body {
   
 }
 
-section > .close {
+section .close {
+	cursor: pointer;
 }
 </style>
 
@@ -164,7 +165,7 @@ eth eth eh eth teh eth e eht hte </p>
 </body>
 <script>
 $('section .body')
-	.append('<div class="close">close</div>')
+	.append('<div class="close">Close this section</div>')
 	.hide();
 
 var delay = 500;
