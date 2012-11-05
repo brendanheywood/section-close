@@ -209,21 +209,15 @@ $('section .close').click(function(){
 		.css('height', 0)
 		.animate({
 			'height': sectionHeight
-		}, delay), function(){
-			// scroll up by X
-			window.scrollTo(scrollTop - sectionHeight);
-
+		}, delay, function(){
 			// remove dummy
 			cheat.remove();
-		}
-	} 
 
-	// then at the remove the div and a single scrollTo
-/*
-	$('html,body').animate({
-		scrollTop: scrollTop - sectionHeight
-	}, delay);
-*/
+			// scroll up by X
+			//window.scrollBy(0, sectionHeight);
+
+		});
+	 
 });
 
 
