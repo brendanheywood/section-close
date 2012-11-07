@@ -204,17 +204,19 @@ $('section .close').click(function(){
 	var sectionHeight = sec.find('.body').outerHeight();
 
 	// animate a mirror opening div
-	var cheat = $('<div> </div>')
+	var $cheat = $('<div> </div>')
 		.prependTo('body')
 		.css('height', 0)
 		.animate({
 			'height': sectionHeight
 		}, delay, function(){
-			// remove dummy
-			cheat.remove();
+			// can't use scrollBy as you hit the viewport edges
+			// window.scrollBy(0, -sectionHeight);
 
-			// scroll up by X
-			//window.scrollBy(0, sectionHeight);
+			// remove dummy
+			$cheat.remove();
+			window.scrollTo(0, scrollTop - sectionHeight); // TODO what about x dimension?
+
 
 		});
 	 
