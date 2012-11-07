@@ -4,13 +4,14 @@
 var heading = 'h1';
 var body = '.body';
 var delay = 500;
-var message = 'Close this section';
 var openClass = 'open';
+var close = '<div>Close</div>';
 var alwaysScroll = true;
 
+	var $sections = $('section');
 
 	//open from top
-	$('section').find(heading).click(function topToggle(){
+	$sections.find(heading).click(function topToggle(){
 		var sec = $(this).closest('section');
 		if (sec.hasClass(openClass)){
 			sec.removeClass(openClass);
@@ -21,8 +22,8 @@ var alwaysScroll = true;
 		}
 	});
 
-
-	var $close = $('<div class="close">' + message + '</div>').click(function bottomClose(){
+	// create close buttons
+	var $close = $(close).click(function bottomClose(){
 
 		var sec = $(this).closest('section');
 		sec.removeClass(openClass);
@@ -52,8 +53,9 @@ var alwaysScroll = true;
 	});
 
 
-	$('section').find(body)
+	$sections.find(body)
 		.append( $close )
+		.not( '.' + openClass )
 		.hide();
 
 }(jQuery, window));
